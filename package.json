@@ -1,6 +1,6 @@
 {
   "name": "make-globs-absolute",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Map an array of globs to their absolute path equivalent",
   "license": "MIT",
   "repository": "jmversteeg/make-globs-absolute",
