@@ -1,43 +1,48 @@
-# is-glob-blacklist [![Build Status](https://travis-ci.org/jmversteeg/is-glob-blacklist.svg?branch=master)](https://travis-ci.org/jmversteeg/is-glob-blacklist)
+# make-globs-absolute [![Build Status](https://travis-ci.org/jmversteeg/make-globs-absolute.svg?branch=master)](https://travis-ci.org/jmversteeg/make-globs-absolute)
 
-> Detect whether an array of globs is a blacklist
+> Map an array of globs to their absolute path equivalent
 
 
 ## Install
 
 ```
-$ npm install --save is-glob-blacklist
+$ npm install --save make-globs-absolute
 ```
 
 
 ## Usage
 
 ```js
-var isGlobBlacklist = require('is-glob-blacklist');
+var makeGlobsAbsolute = require('make-globs-absolute');
 
-isGlobBlacklist(['foo']);
-//=> false
+makeGlobsAbsolute(['foo']);
+//=> ['/Users/jmversteeg/foo']
 
-isGlobBlacklist(['!foo']);
-//=> true
+makeGlobsAbsolute(['!foo']);
+//=> ['!/Users/jmversteeg/foo']
 
-isGlobBlacklist(['foo', '!foo/bar']);
-//=> false
-
-isGlobBlacklist(['!foo', 'foo/bar']);
-//=> true
+makeGlobsAbsolute(['foo', '!foo/bar'], '/bar');
+//=> ['bar/foo', '!bar/foo/bar']
 ```
 
 
 ## API
 
-### isGlobBlacklist(input)
+### makeGlobsAbsolute(input, wd)
 
 #### input
 
 Type: `string[]`
 
 Array of globs.
+
+#### wd 
+
+Type: `string`
+
+Optional (default: `process.cwd()`)
+
+Working directory
 
 ## License
 
